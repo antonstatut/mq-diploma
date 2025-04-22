@@ -476,7 +476,7 @@
   
   .input-search {
     width: 220px;
-    height: 45px;
+    min-height: 45px;
     font-size: 13px;
     padding-left: 13px;
     background-color: #f4f7f6;
@@ -582,7 +582,7 @@
   
   .themes-item {
     border-bottom: 1px solid #eeeeee;
-    margin-bottom: 24px;
+    margin-bottom: 23px;
   }
   
   .themes-link {
@@ -596,7 +596,7 @@
   .themes-link:hover {
     color: #b59f5b;
   }
-  
+
   .superscript {
     margin-left: 3px;
     color: #b59f5b;
@@ -629,6 +629,7 @@
     outline-offset: 20px;
     margin-top: -9px;
     min-height: 200px;
+    flex-grow: 1;
   }
   .product-link{
     color: #b59f5b;
@@ -766,23 +767,24 @@
   .copyright-links:hover {
     color: #000000;
   }
-  #popup-overlay_hidden {
+   /*POPUP*/
+
+  .popup-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    display: none;
+    display: flex;
+    /* display: none;*/
+    justify-content: center;
+    align-items: center;
   }
    
-  #popup {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  .popup {
     background-color: #fff;
-    padding: 54px 30px 54px 30px;
+    padding: 49px 30px 54px 30px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     width: 390px;
     height: 589px;
@@ -790,6 +792,18 @@
     font-size: 13px;
     box-sizing: border-box;
   }
+
+  .close_popup{
+    position: absolute;
+    border:none;
+    background-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    font-size: 35px;
+    color: #ffffff;
+    margin-top: -85px;
+    margin-left: 340px;
+  }
+
   .title-popup{
     text-align: center;
     font-weight: bold;
@@ -824,8 +838,8 @@
     border: 1px solid #b59f5b;
   }
 
-  .radio-email{
-    margin-bottom: 33px;
+  .label-more-content{
+    margin-top: 21px;
   }
 
   .title-radio{
@@ -878,7 +892,7 @@
     min-height: 131px;
     width: 100%;
     resize: none;
-    margin-top: 12px; 
+    margin-top: 0; 
     border: none;
     background-color: #f4f7f6;
     border: 1px solid transparent;
@@ -887,7 +901,7 @@
 
   #more-content{
     padding-left: 22px;
-    padding-top: 22px;
+    padding-top: 20px;
     color: rgba(0, 0, 0, 0.54);
   }
 
@@ -911,19 +925,17 @@
   .button-popup:hover{
     background-color: black;
   }
-
-  @media(min-width: 1201px) {
-    .burger{
-      display: none;
-    }
-  }
-  @media(max-width: 1200px) {
-  .header-nav-menu{
-      display: none;
-    }
+  .burger{
+    display: none;
   }
 
   @media(min-width: 641px) and (max-width: 1200px){
+    .burger{
+      display: flex;
+    }
+    .header-nav-menu{
+      display: none;
+    }
     header {
       background-image: url(../images/banner-bg-tablet.jpg);
       min-height: 391px;
@@ -973,7 +985,7 @@
     margin-top: 50px;
   }
   .main-box{
-    width: calc(100%-270px);
+    width: calc(100% - 270px);
   }
   .box {
     flex-direction: column;
@@ -1005,7 +1017,7 @@
     width: 100%;
   }
   .products{
-    width: calc(100%-70px);
+    width: calc(100% - 70px);
     flex-wrap: wrap;
     justify-content: flex-start;
     margin-left: 35px;
@@ -1035,6 +1047,7 @@
     width: 100%;
   }
 }
+
 @media(min-width: 641px) and (max-width: 1200px) and (orientation: landscape){
   .box-trends{
     flex-wrap: nowrap;
@@ -1057,6 +1070,12 @@
 }
 
   @media(max-width: 640px){
+    .burger{
+      display: flex;
+    }
+    .header-nav-menu{
+      display: none;
+    }
     header {
       background-image: url(../images/banner-mobile.jpg);
       width: 100%;
@@ -1068,7 +1087,7 @@
   .header-title{
    font-size: 26px;
    line-height: 36px;
-   margin-top: 42px;
+   margin-top: 33px;
   }
   .logo{
     display: none;
@@ -1082,12 +1101,25 @@
     width: 269px;
     height: 61px;
   }
+  main {
+    margin-top: 35px;
+  }
+  .title-trends{
+    font-size: 16px;
+  }
+  .title-trends::after {
+    margin-top: 5px;
+  }
+  .title-trend{
+    font-size: 16px;
+  }
     .box-trends{
       display: block;
-    }
+    } 
     .box-trend-first{
       width: 100%;
       min-height: 233px;
+      padding: 16px 16px 15px 15px;
     }
     .box-trend-second{
       width: 100%;
@@ -1107,41 +1139,105 @@
       margin-top: 3px;
       margin-left: 0;
     }
+    .box-trend{
+      padding: 28px 20px 21px 20px;
+    }
     .main-container{
       width: calc(100% - 30px);
       display: block;
       margin-left: 15px;
       margin-right: 15px;
+      margin-top: 41px;
     }
     .box{
       width: 100%;
       display: block;
     }
-    .box:nth-child(7){
-      margin-bottom: 44px;
+    .box:nth-child(n+2) {
+      margin-top: 58px; 
+    }
+    .box:nth-child(5){
+      margin-bottom: 58px;
     }
     .main-box-text{
       width: 100%;
       margin-left: 0;
+      margin-top: 7px;
+    }
+    .card-name{
+      font-size: 16px;
+      line-height: 20px;
+      margin-bottom: 18px;
+    }
+    .text{
+      font-size: 14px;
+      line-height: 20px;
+      margin-top: 14px;
     }
     .image-box{
       width: 100%;
-      min-height: 253px;
+      height: 254px;
       margin-left: 0;
     }
+    .aside-title{
+      margin-bottom: 23px;
+      font-size: 16px;
+      line-height: 29px;
+    }
+    .aside-new-posts{
+      width: 100%;
+      margin-bottom: 39px;
+    }
+    .aside-title::after {
+      margin-top: 4px;
+    }
+    .new-posts-item-content {
+      width: calc(100% - 70px);
+    }
+    .search-form {
+      width: 100%;
+      margin-top: 54px;
+    }
+    .input-search{
+      width: 100%;
+    }
+    .field-caption{
+      width: 100%;
+    }
+    .aside-subscrib {
+      margin-bottom: 35px;
+    }
     .title-products{
+      width: 100%;
+      margin-top: -10px;
+    }
+    .aside-tags {
+      margin-bottom: 30px;
+    }
+    .input-subscrib{
+      width: 100%;
+    }
+    .button-subscrib{
       width: 100%;
     }
     .products{
       display: block;
     }
     .product:nth-child(n+2){
-      margin-left: 35px;
+      margin-left: 20px;
+      margin-top: 48px;
     }
     .product{
-      width: calc(100% - 80px);
-      margin-left: 40px;
-      margin-top: 45px;
+      width: calc(100% - 40px);
+      margin-left: 20px;
+      margin-top: 30px;
+    }
+    .product-title{
+    font-size: 17px;
+    }
+    .product-content{
+      margin-top: -20px;
+      min-height: 175px;
     }
     footer{
       width: 100%;
@@ -1150,8 +1246,10 @@
       width: 100%;
     }
     aside{
-      margin-left: 15px;
+      margin-left: 0;
+      width: 100%;
     }
+
   }
   @media(max-width: 640px) and (orientation: landscape){
     .box-trends{
